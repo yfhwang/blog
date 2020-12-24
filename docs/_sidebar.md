@@ -72,6 +72,9 @@
   * [06.消息队列](b05-系统设计/06.消息队列.md)
 * c01-C++语言
   * [Algorithm库](c01-C++语言/Algorithm库.md)
+  * [C++Primer_第1部分-C++基础](c01-C++语言/C++Primer_第1部分-C++基础.md)
+  * [C++Primer_第2部分-C++标准库](c01-C++语言/C++Primer_第2部分-C++标准库.md)
+  * [C++Primer_第3部分-类设计者的工具](c01-C++语言/C++Primer_第3部分-类设计者的工具.md)
   * [STL库笔记](c01-C++语言/STL库笔记.md)
 * c01-Java语言
   * [01.Java基础](c01-Java语言/01.Java基础.md)
