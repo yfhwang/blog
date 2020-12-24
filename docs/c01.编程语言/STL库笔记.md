@@ -1,0 +1,131 @@
+#  STL库笔记
+
+## vector
+
+常用方法
+
+| 操作                                                         | 代码                                       |
+| ------------------------------------------------------------ | ------------------------------------------ |
+| 用迭代器定义                                                 | `vector<int>(ans.begin(), ans.end());`     |
+| 重新定义大小                                                 | `vec.resize(_size,_init_value)`            |
+| 在末尾插入/删除                                              | `vec.push_back(a)`、`vec.pop_back()`       |
+| 在`vec[i]`前面插入a                                          | `vec.insert(vec.begin()+i,a)`              |
+| 删除`vec[i]`                                                 | `vec.erase(vec.begin()+i)`                 |
+| **查找最大值**                                               | `it = max_element(vec.begin(), vec.end())` |
+| 取开头元素的 referance                                       | `vec.front()`                              |
+| 取末尾元素的 referance                                       | `vec.back()`                               |
+| 迭代器，指向第一个元素                                       | `vec.begin()`                              |
+| 逆序迭代器，指向最后一个元素后的位置                         | `vec.end()`                                |
+| 逆序迭代器，指向最后一个元素                                 | `vec.rbegin()`                             |
+| 逆序迭代器，指向第一个元素前的位置                           | `vec.rend()`                               |
+| 反转                                                         | `reverse(begin(ans), end(ans))`            |
+| 交换                                                         | `swap`                                     |
+| 赋值：**[`fill`函数](https://blog.csdn.net/liu16659/article/details/87152348)** | `fill(first,last,val)`                     |
+
+insert方法实现在ans后接上l数组：（在java中可以用`append`）
+
+`ans.insert(ans.end(), l.begin(), l.end());`
+
+
+
+
+
+
+
+## stack
+
+| 操作       | 代码                      |
+| ---------- | ------------------------- |
+| 压入、弹出 | `st.push(i)` 、`st.pop()` |
+| 取栈顶     | `st.top()`                |
+
+
+
+## queue
+
+| 操作           | 代码                    |
+| -------------- | ----------------------- |
+| 压入、弹出     | `q.push(i)` 、`q.pop()` |
+| 取队头、取队尾 | `q.front()`、`q.back()` |
+
+## deque
+
+[双端队列](https://www.cnblogs.com/linuxAndMcu/p/10260124.html)
+
+| 操作                                   | 代码                                                      |
+| -------------------------------------- | --------------------------------------------------------- |
+| 头部添加元素                           | `deq.push_front(const T& x);`                             |
+| 末尾添加元素                           | `deq.push_back(const T& x);`                              |
+| 任意位置插入一个元素                   | `deq.insert(iterator it, const T& x);`                    |
+| 任意位置插入 n 个相同元素              | `deq.insert(iterator it, int n, const T& x);`             |
+| 插入另一个向量的 [forst,last] 间的数据 | `deq.insert(iterator it, iterator first, iterator last);` |
+| 头部删除元素                           | `deq.pop_front();`                                        |
+| 末尾删除元素                           | `deq.pop_back();`                                         |
+| 任意位置删除一个元素                   | `deq.erase(iterator it);`                                 |
+| 删除 [first,last] 之间的元素           | `deq.erase(iterator first, iterator last);`               |
+
+## priority_queue
+
+`#include <functional>  `
+
+| 操作                 | 代码                                               |
+| -------------------- | -------------------------------------------------- |
+| 定义                 | `priority_queue<Type, Container, Functional>`      |
+| 升序队列（小顶）     | `priority_queue <int,vector<int>,less<int> > q;`   |
+| 降序队列（大顶）默认 | `priority_queue <int,vector<int>,greater<int> >q;` |
+
+
+
+## map
+
+unordered_map
+
+二者区别：
+
+- map内部为红黑树，自动有序
+- umap内部为hash表，内部无序
+
+各自优缺点
+
+- umap空间消耗大，建立耗时，插入、查找快
+
+| 操作                       | 代码                      |
+| -------------------------- | ------------------------- |
+| 查找中是否有key为`i`的元素 | `mp.count(i)`             |
+| 找到key为`i`的迭代器       | `m.find(i)`               |
+| 迭代器`it`的`key`和`value` | `it->first`、`it->second` |
+| 找到key为i的value值        | `mp.get(i)`               |
+| 在map中插入元素            | `m.insert({curr,p});`     |
+
+## set
+
+unordered_set和set的区别，与umap和map的区别类似
+
+元素自动有序，且不含有重复项
+
+| 操作               | 代码               |
+| ------------------ | ------------------ |
+| 返回对应值的迭代器 | `st.find(value)`   |
+| 是否找到           | `st.count(value)`  |
+| 插入               | `st.insert(value)` |
+
+## pair
+
+| 操作         | 代码                                     |
+| ------------ | ---------------------------------------- |
+| 定义         | `Pair<string, int> name_age ("Tom", 18)` |
+| 访问两个元素 | `p1.first`、`p1.second`                  |
+
+
+
+## string
+
+`string`也可以用`vector`的许多方法，如`s.pop_back`、`s.back()`等
+
+| 操作                   | 代码                           |
+| ---------------------- | ------------------------------ |
+| 查找最后一个空格的位置 | `int pos=s.find_last_of(' ')`  |
+| 删除某个位置的字符     | `s.erase(it)`                  |
+| 子串                   | `s.substr(pos, substringSize)` |
+| 翻转                   | `reverse(s.begin(), s.end())`  |
+

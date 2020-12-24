@@ -1,0 +1,116 @@
+# MySQL
+
+## 安装
+
+https://how2j.cn/k/mysql/mysql-install/377.html
+
+```
+账户
+root
+密码
+admin
+```
+
+
+
+## 基本操作
+
+### 创建数据库
+
+```mysql
+create database 数据库名称
+```
+
+### 创建表
+
+```mysql
+CREATE TABLE hero (
+  id int(11) AUTO_INCREMENT,
+  name varchar(30) ,
+  hp float ,
+  damage int(11) ,
+  PRIMARY KEY (id)
+)  DEFAULT CHARSET=utf8;
+```
+
+### 插入数据
+
+```mysql
+insert into hero values (null,'盖伦',616,100);
+insert into hero values (null,'提莫',123,13);
+insert into hero values (null,'卡特',239,49)
+```
+
+### 查询数据
+
+查询表中所有数据
+
+```mysql
+select * from hero
+```
+
+查询表中前五条数据
+
+```mysql
+select * from hero limit 0,5
+```
+
+统计表中有多少条数据
+
+```sql
+select count(*) from hero
+```
+
+### 修改数据
+
+```mysql
+update hero set hp = 818 where id = 1;
+update hero set damage = 110 where name = '盖伦'
+```
+
+### 删除数据
+
+```mysql
+delete from hero where id = 1
+```
+
+## 备份与还原
+
+### 使用MySQL-FRONT备份
+
+1. 右键点击数据库
+
+2. 输出菜单
+
+3. SQL 文件
+
+![使用客户端MySQL-FRONT 备份](../images/2629.png)
+
+
+
+### 使用MySQL自带命令行备份
+
+```bash
+"C:\Program Files (x86)\MySQL\MySQL Server 5.5\bin\mysqldump.exe" -uroot -padmin -hlocalhost -P3306 test -r c:\test.sql
+```
+
+### 使用MySQL-FRONT还原
+
+与备份类似的
+
+1. 右键点击test数据库
+
+2. 输入
+
+3. SQL文件
+
+4. 选中前一步备份生成的SQL文件
+
+![使用客户端Mysql-front还原](../images/2630.png)
+
+
+
+```mysql
+"C:\Program Files (x86)\MySQL\MySQL Server 5.5\bin\mysql.exe" -u root -padmin how2java < C:/Users/ivan/Documents/test.sql
+```
+

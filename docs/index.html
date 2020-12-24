@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>BLOG</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <meta name="description" content="Description">
+  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify/lib/themes/vue.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/mermaid/dist/mermaid.css">
+</head>
+<body>
+  <div id="app"></div>
+<script src="//unpkg.com/mermaid/dist/mermaid.js"></script>
+<script src="//unpkg.com/docsify-mermaid@latest/dist/docsify-mermaid.js"></script>
+<script src="dist/docsify-mermaid.js"></script>
+<script>mermaid.initialize({ startOnLoad: true });</script>
+<!-- 字数统计 -->
+<script src="//unpkg.com/docsify-count/dist/countable.js"></script>
+<!--Java代码高亮-->
+<script src="//unpkg.com/prismjs/components/prism-java.js"></script>
+
+	<script>
+	    window.$docsify = {
+	        repo: 'docsifyjs/docsify',
+	        loadSidebar: true,
+	        maxLevel: 2,
+	        subMaxLevel: 2,
+	        coverpage: true,
+	        auto2top: true,
+	        coverpage: false,
+
+		    plugins: [
+			    function(hook, vm) {
+			        hook.doneEach(function() {
+			            document.querySelectorAll(".sidebar-nav > ul > li").forEach(
+			                function(node, index, nodelist) {
+			                    var span = document.createElement("span");
+			                    span.innerHTML = node.firstChild.data;
+			                    span.style.cursor = "pointer";
+			                    span.onclick = function(event) {
+			                        var ul = event.target.nextElementSibling;
+			                        if (ul.style.display === "none") {
+			                            ul.style.display = "block";
+			                        } else {
+			                            ul.style.display = "none";
+			                        }
+			                    };
+			                    node.firstChild.replaceWith(span);
+			                    node.lastChild.style.display = "none";
+			                });
+			            var active = document.querySelector(".sidebar-nav li.active");
+			            if (active) {
+			                active.parentElement.style.display = "block";
+			            }
+			        });
+			    }
+			]
+
+		}
+
+	</script>
+  <script src="//cdn.jsdelivr.net/npm/docsify/lib/docsify.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/docsify-copy-code"></script>
+</body>
+</html>

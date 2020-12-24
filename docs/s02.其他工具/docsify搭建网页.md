@@ -1,0 +1,231 @@
+# docsify搭建markdown网页
+
+## 参考资料
+
+- [官方中文文档](https://docsify.js.org/#/zh-cn/quickstart)
+- [官方GitHub页面](https://github.com/docsifyjs/docsify-cli)
+- [Docsify快速搭建个人博客](https://www.imooc.com/article/287154)
+- https://sspai.com/post/55786
+  - https://wsine.github.io/blog/#/
+  - 侧边栏目录
+  - 目录折叠
+
+## 安装与初始化
+
+### 安装node
+
+https://npm.taobao.org/mirrors/node/v10.16.0/
+
+### 切换为淘宝源
+
+1.得到原本的镜像地址
+
+```bash
+npm get registry 
+```
+
+> https://registry.npmjs.org/
+
+设成淘宝的
+
+```bash
+npm config set registry http://registry.npm.taobao.org/
+```
+
+2.换成原来的
+
+```bash
+npm config set registry https://registry.npmjs.org/
+```
+
+### 安装
+
+ps：安装过程可能需要sudo权限
+
+```bash
+npm i docsify-cli -g
+```
+
+### 初始化
+
+进入到项目文件夹中，如果文档均在`./docs`目录下
+
+```bash
+docsify init ./docs
+```
+
+
+
+## 本地预览
+
+通过运行 `docsify serve` 启动一个本地服务器，默认访问地址 [http://localhost:3000](http://localhost:3000/) 。
+
+进入到项目文件夹后，运行：
+
+```bash
+docsify serve docs
+#docsify serve <path> [--open false] [--port 3000]
+```
+
+
+
+## 定制侧边栏
+
+修改`index.html`文件
+
+```html
+<script>
+    window.$docsify = {
+        repo: 'docsifyjs/docsify',
+        loadSidebar: true,
+        maxLevel: 2,
+        subMaxLevel: 2,
+        coverpage: true,
+        auto2top: true,
+        coverpage: false
+    }
+</script>
+```
+
+### 配置规则
+
+| 配置项                                                       | 含义                           |
+| ------------------------------------------------------------ | ------------------------------ |
+| repo: 'docsifyjs/docsify', <br />repo: 'https://github.com/docsifyjs/docsify/', | 配置仓库地址                   |
+| loadSidebar: true,                                           | 加载侧边栏                     |
+| maxLevel: 2,                                                 | 将`_sidebar.md`文档渲染成目录  |
+| subMaxLevel: 2,                                              | 抓取文章标题，渲染成目录       |
+| auto2top: true,                                              | 切换页面后自动跳转到页面顶部   |
+| coverpage: true,   <br />coverpage: 'cover.md',              | 封面                           |
+| loadNavbar: true,                                            | 将`_navbar.md`渲染为顶部导航栏 |
+
+
+
+## 自动生成侧边栏
+
+```bash
+# getsidebar.sh
+src=docs
+sidebar=$src/_sidebar.md
+: > $sidebar   #清空sidebar文件
+echo "* [参考资料]()" >> $sidebar
+echo "* [目录](SUMMARY.md)" >> $sidebar
+for file_or_dir in `ls $src/`	#遍历文件夹
+do
+	if [ "$file_or_dir" = "images/" ];then	#images不用输出到目录中
+		echo $file_or_dir
+	elif [ "$file_or_dir" = "README.md" ]; then
+		echo $file_or_dir
+	elif [ "$file_or_dir" = "_sidebar.md" ]; then
+		echo $file_or_dir
+	elif [ "$file_or_dir" = "ignore/" ]; then
+		echo $file_or_dir
+	else
+    	if [[ $file_or_dir =~ ".md" ]];then	#如果file以.md结尾
+			echo "* [${file_or_dir%.md*}]($file_or_dir)" # >> $sidebar
+		elif [[ $file_or_dir =~ "." ]]; then  #如果file以.结尾
+			echo $file_or_dir
+		else	#如果file是文件夹
+			echo "* ${file_or_dir%/}" >> $sidebar
+			for subfile in $src/$file_or_dir*	#遍历子文件夹
+			do
+				if  [[ $subfile =~ ".md" ]];then
+					subfile_temp="${subfile%.md*}"
+					echo "  * [${subfile_temp##*/}](${subfile#*/})" >> $sidebar
+				fi
+			done
+		fi
+	fi
+done 
+```
+
+## 侧边栏目录
+
+```javascript
+plugins: [
+    function(hook, vm) {
+        hook.doneEach(function() {
+            document.querySelectorAll(".sidebar-nav > ul > li").forEach(
+                function(node, index, nodelist) {
+                    var span = document.createElement("span");
+                    span.innerHTML = node.firstChild.data;
+                    span.style.cursor = "pointer";
+                    span.onclick = function(event) {
+                        var ul = event.target.nextElementSibling;
+                        if (ul.style.display === "none") {
+                            ul.style.display = "block";
+                        } else {
+                            ul.style.display = "none";
+                        }
+                    };
+                    node.firstChild.replaceWith(span);
+                    node.lastChild.style.display = "none";
+                });
+            var active = document.querySelector(".sidebar-nav li.active");
+            if (active) {
+                active.parentElement.style.display = "block";
+            }
+        });
+    }
+]
+```
+
+
+
+## 使用LateX数学公式
+
+> https://github.com/upupming/docsify-katex
+
+```html
+<!-- CDN files for docsify-katex -->
+<script src="//cdn.jsdelivr.net/npm/docsify-katex@latest/dist/docsify-katex.js"></script>
+<!-- or <script src="//cdn.jsdelivr.net/gh/upupming/docsify-katex@latest/dist/docsify-katex.js"></script> -->
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.css"/>
+```
+
+## 切换主题
+
+- https://docsify.js.org/#/zh-cn/themes
+
+## 复制到剪贴板
+
+[复制到剪贴板](https://docsify.js.org/#/zh-cn/plugins?id=复制到剪贴板)
+
+在所有的代码块上添加一个简单的`Click to copy`按钮来允许用户从你的文档中轻易地复制代码。由[@jperasmus](https://github.com/jperasmus)提供。
+
+```html
+<script src="//cdn.jsdelivr.net/npm/docsify-copy-code"></script>
+```
+
+## mac使用`getsidebar.sh`文件
+
+ref:https://blog.csdn.net/u011784994/article/details/73880141
+
+getsidebar.sh文件在windows系统中编写，转而在mac上使用时，命令行提示：`: No such file or directorysers/ivanhuang/Desktop/blog/docs`
+
+原因为平台迁移碰到权限问题
+
+解决方法：
+
+```
+用vim打开该sh文件，输入：
+
+[plain]
+
+:set ff  
+
+回车，显示fileformat=dos，重新设置下文件格式：
+
+[plain]
+
+:set ff=unix  
+
+保存退出:
+
+[plain]
+
+:wq  
+```
+
+
+

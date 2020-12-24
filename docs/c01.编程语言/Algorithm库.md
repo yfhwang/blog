@@ -1,0 +1,69 @@
+# algorithm
+
+| 操作 | 代码        |
+| ---- | ----------- |
+| 交换 | `swap(a,b)` |
+
+## sort函数
+
+```c++
+#include <algorithm>//头文件
+int a[N];
+input();//读入一个长度为n的数组
+sort(a+1,a+n+1);//两个参数头指针、尾指针
+//[a+1,a+n+1)前闭后开的区间内的排序
+//默认：从小到大升序排序。
+```
+
+利用`compare`函数进行从大到小降序排序。
+
+也可以用a数组存储其他数据类型甚至`struct`，直接套换即可。
+
+```c++
+bool compare(int x,int y){return x>y;}
+sort(a+1,a+n+1,compare);
+```
+
+也可通过重载`<`操作符实现
+
+这样编译器会将程序中（当然也包括sort中）的、所有用于两个node间的`<`重载为你定义的`operator`，于是就可以实现以struct中的x为关键字进行升序排序。
+
+```c++
+struct node
+{
+    int x,y;
+}a[N];
+bool operator<(const node&a,const node&b){return a.x<b.x;}
+sort(a+1,a+n+1);
+```
+
+
+
+如果你还嫌这个麻烦的话，可以在结构体内重载比较函数：
+
+　　我们发现这个重载函数中的参数后面跟着一个“const”，据说这是因为在结构体内定义的函数都会有一个隐藏的指针this指向本结构体，这个const就是修饰它的。
+
+```c++
+struct node
+{
+    int x,y;
+    bool operator<(const node b)const{return x<b.x;}
+}a[N];
+sort(a+1,a+n+1);
+```
+
+
+
+## 堆
+
+https://blog.csdn.net/qq_35433716/article/details/89840856
+
+https://blog.csdn.net/WhiStLenA/article/details/52032067
+
+`make_heap() `生成堆。可以用伪函数less()和greater()来生成大顶堆和小顶堆，其中type为元素类型。如果只传入前两个参数，**默认是生成大顶堆**。
+
+`push_heap()` 对刚插入的（尾部）元素做堆排序。需要注意的是，只有make_heap（）和push_heap（）同为大顶堆或小顶堆，才能插入。
+
+`pop_heap() `是在堆的基础上，弹出堆顶元素，移动到end的前部，同时将剩下的元素重新构造成(堆排序)一个新的heap。
+
+`sort_heap()`将一个**堆**做排序,最终成为一个有序的系列。可以看到sort_heap时，必须先是一个堆（两个特性：1、最大元素在第一个 2、添加或者删除元素以对数时间），因此必须先做一次make_heap.
