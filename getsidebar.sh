@@ -25,14 +25,21 @@ do
 		elif [ -d $src/$file_or_dir ];then	#如果file是文件夹
 			echo "* ${file_or_dir%/}" >> $sidebar
 			for subfile in $src/$file_or_dir/*	#遍历子文件夹
-			do
+			do	
+				#echo $subfile
+				if [ "$subfile" = "$src/$file_or_dir/DataStructure" ]; then
+					#/Users/ivanhuang/Desktop/blog/docs/a02-算法/Algorithm
+					echo $subfile
+				elif [ "$subfile" = "$src/$file_or_dir/Algorithm" ]; then
+					echo $subfile
+				else
 				#if  [[ $subfile =~ ".md" ]];then
 					subfile_temp="${subfile%.md*}"
 					subfile_src="${subfile%/*}"
 					subfile_src="${subfile_src##*/}"
 
 					echo "  * [${subfile_temp##*/}]($subfile_src/${subfile##*/})" >> $sidebar
-				#fi
+				fi
 			done
 		else #[[ $file_or_dir =~ "." ]]; then  如果file以.结尾
 			echo $file_or_dir
