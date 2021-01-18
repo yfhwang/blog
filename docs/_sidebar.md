@@ -57,6 +57,7 @@
   * [1.7.HTTP](a04-网络/1.7.HTTP.md)
   * [1.8.韩立刚笔记](a04-网络/1.8.韩立刚笔记.md)
   * [2.1.Socket](a04-网络/2.1.Socket.md)
+  * [2.2.interview-网络编程](a04-网络/2.2.interview-网络编程.md)
 * a05-数据库
   * [01.数据库系统原理](a05-数据库/01.数据库系统原理.md)
   * [02.SQL](a05-数据库/02.SQL.md)
@@ -67,7 +68,8 @@
 * a06-Linux
   * [Linux概念](a06-Linux/Linux概念.md)
   * [Linux系统编程](a06-Linux/Linux系统编程.md)
-  * [interview-网络编程](a06-Linux/interview-网络编程.md)
+  * [Linux进程管理](a06-Linux/Linux进程管理.md)
+  * [linux操作](a06-Linux/linux操作.md)
 * a10-面试
   * [os面试题](a10-面试/os面试题.md)
   * [面经1](a10-面试/面经1.md)
@@ -134,14 +136,15 @@
   * [tensorflow](c02-配置深度学习环境/tensorflow.md)
 * s01-coding工具
   * [Docker](s01-coding工具/Docker.md)
+  * [GDB调试程序](s01-coding工具/GDB调试程序.md)
+  * [GUN screen](s01-coding工具/GUN screen.md)
   * [Git](s01-coding工具/Git.md)
   * [Git命令](s01-coding工具/Git命令.md)
-  * [VSCode调试虚拟机CPP](s01-coding工具/VSCode调试虚拟机CPP.md)
+  * [VSCode](s01-coding工具/VSCode.md)
   * [automator编程](s01-coding工具/automator编程.md)
   * [idea下leetcode插件安装](s01-coding工具/idea下leetcode插件安装.md)
   * [iterm2](s01-coding工具/iterm2.md)
   * [jetbrains快捷键](s01-coding工具/jetbrains快捷键.md)
-  * [linux操作](s01-coding工具/linux操作.md)
   * [mysql笔记](s01-coding工具/mysql笔记.md)
   * [shell编程](s01-coding工具/shell编程.md)
   * [vim常用命令](s01-coding工具/vim常用命令.md)
@@ -152,6 +155,7 @@
   * [kindle_azw3文件css](s02-其他工具/kindle_azw3文件css.md)
   * [sisco路由器刷机与设置](s02-其他工具/sisco路由器刷机与设置.md)
   * [typora画UML图](s02-其他工具/typora画UML图.md)
+  * [vmware](s02-其他工具/vmware.md)
 * s03-操作系统设置
   * [macOS系统环境配置](s03-操作系统设置/macOS系统环境配置.md)
   * [win下键盘键位互换](s03-操作系统设置/win下键盘键位互换.md)

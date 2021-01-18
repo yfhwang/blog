@@ -145,3 +145,9 @@ https://code.visualstudio.com/docs/editor/debugging#_launch-configurations
 
 ![d5c0231859c5b36ed4bf88cc0354785](../images/d5c0231859c5b36ed4bf88cc0354785.png)
 
+
+
+# 快捷键
+
+规范代码：option+shift+F
+

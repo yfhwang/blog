@@ -1,18 +1,24 @@
 ## 任务管理
 
 ​        (1) CTRL+Z挂起进程并放入后台
+
 　　(2) jobs 显示当前暂停的进程
+
 　　(3) bg %N 使第N个任务在后台运行(%前有空格)
+
 　　(4) fg %N 使第N个任务在前台运行
 　　默认bg,fg不带%N时表示对最后一个进程操作!
 
 ## jupyter lab 在后台启动时怎么关闭
 
-**ps aux | grep jupyter**
+```sh
+ps aux | grep jupyter
+#找到jupyter lab的进程号
 
-**找到jupyter lab的进程号**
+kill -9 jupyter lab进程号
+```
 
-**kill -9 jupyter lab进程号**
+
 
 
 
@@ -216,8 +222,6 @@ tar -zxvf 打包文件.tar.gz -C 目标路径
 
 pip、apt-get
 
-
-
 **4.1 通过 apt 安装／卸载软件**
 
 - apt 是 `Advanced Packaging Tool`，是 Linux 下的一款安装包管理工具
@@ -234,9 +238,7 @@ $ sudo apt remove 软件名
 $ sudo apt upgrade 
 ```
 
-### 
-
-**配置软件源**
+### 配置软件源
 
 - 如果希望在 `ubuntu` 中安装软件，**更加快速**，可以通过设置**镜像源**，选择一个访问网速更快的服务器，来提供软件下载／安装服务
 - 提示：更换服务器之后，需要一个相对比较长时间的更新过程，需要耐心等待。更新完成后，再安装软件都会从新设置的服务器下载软件了
