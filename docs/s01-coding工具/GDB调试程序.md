@@ -199,8 +199,45 @@ set listsize count  #设置一次显示源代码的行数
 show listsize # 查看当前listsize的设置。
 ```
 
+## 运行参数
 
+### 设置参数
 
+- 第一种方法：为程序传递参数5
+
+```sh
+root@guo-virtual-machine:~/debug# gdb --args more01 text.txt
+```
+
+- 第二种方法：为程序传递参数5
+
+```
+(gdb) run 5
+```
+
+- 第三种方法：为程序传递参数5
+
+```sh
+(gdb) set args 5
+
+(gdb) run
+
+Starting program: /root/debug/factorial 5
+warning: no loadable sections found in added symbol-file system-supplied DSO at 0x7ffff7ffa000
+Factorial of 5 is 120
+```
+
+### 查看参数
+
+show args
+
+```
+(gdb) show args
+
+Argument list to give program being debugged when it is started is "5".
+```
+
+https://blog.csdn.net/u012611644/article/details/79614598
 
 
 

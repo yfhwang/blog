@@ -66,10 +66,11 @@
   * [05.Redis](a05-数据库/05.Redis.md)
   * [interview-数据库](a05-数据库/interview-数据库.md)
 * a06-Linux
+  * [1.1.Linux基本操作](a06-Linux/1.1.Linux基本操作.md)
+  * [Linux操作](a06-Linux/Linux操作.md)
   * [Linux概念](a06-Linux/Linux概念.md)
-  * [Linux系统编程](a06-Linux/Linux系统编程.md)
   * [Linux进程管理](a06-Linux/Linux进程管理.md)
-  * [linux操作](a06-Linux/linux操作.md)
+  * [《Unix-Linux编程实践教程》笔记](a06-Linux/《Unix-Linux编程实践教程》笔记.md)
 * a10-面试
   * [os面试题](a10-面试/os面试题.md)
   * [面经1](a10-面试/面经1.md)
@@ -137,7 +138,6 @@
 * s01-coding工具
   * [Docker](s01-coding工具/Docker.md)
   * [GDB调试程序](s01-coding工具/GDB调试程序.md)
-  * [GUN screen](s01-coding工具/GUN screen.md)
   * [Git](s01-coding工具/Git.md)
   * [Git命令](s01-coding工具/Git命令.md)
   * [VSCode](s01-coding工具/VSCode.md)

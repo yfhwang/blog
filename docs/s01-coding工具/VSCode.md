@@ -145,9 +145,39 @@ https://code.visualstudio.com/docs/editor/debugging#_launch-configurations
 
 ![d5c0231859c5b36ed4bf88cc0354785](../images/d5c0231859c5b36ed4bf88cc0354785.png)
 
+## VSCODE报无法打开“printf.c”的解决方法
+
+https://blog.csdn.net/weixin_43814616/article/details/110338126
+
+在Ubuntu中使用VSCODE调试C代码时，出现如下错误 ：无法打开“printf.c”: 无法读取文件’/build/glibc-YYA7BZ/glibc-2.31/stdio-common/printf.c’ (Error: 无法解析不存在的文件"/build/glibc-YYA7BZ/glibc-2.31/stdio-common/printf.c")，这是因为没有安装glibc的缘故。
+
+解决方法：需要在错误提示中的路径’/build/glibc-YYA7BZ’中安装glibc，版本V2.31。安装步骤如下：
+1、创建目录，目录名需与错误提示中目录名一致
+
+sudo mkdir -p /build/glibc-YYA7BZ
+1
+2、下载glibc
+
+cd /build/glibc-YYA7BZ
+sudo wget http://ftp.gnu.org/gnu/glibc/glibc-2.31.tar.gz
+1
+2
+3、解压glibc
+
+sudo tar -zxvf glibc-2.31.tar.gz
+
+## VSCode printf无输出
+
+printf里的内容都是在输出缓冲区中，并没有打印出来，
+
+解决方法有两个，第一个是输出的内容最后加上\n，第二个是将fflush(stdout);紧跟在printf后面。
+
+https://blog.csdn.net/j___t/article/details/99704646
 
 
-# 快捷键
 
-规范代码：option+shift+F
 
+
+# 大括号
+
+https://blog.csdn.net/qq_43657442/article/details/112302740
