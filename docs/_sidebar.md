@@ -58,6 +58,7 @@
   * [1.8.韩立刚笔记](a04-网络/1.8.韩立刚笔记.md)
   * [2.1.Socket](a04-网络/2.1.Socket.md)
   * [2.2.interview-网络编程](a04-网络/2.2.interview-网络编程.md)
+  * [《TCPIP网络编程》](a04-网络/《TCPIP网络编程》.md)
 * a05-数据库
   * [01.数据库系统原理](a05-数据库/01.数据库系统原理.md)
   * [02.SQL](a05-数据库/02.SQL.md)
@@ -67,12 +68,14 @@
   * [interview-数据库](a05-数据库/interview-数据库.md)
 * a06-Linux
   * [1.1.Linux基本操作](a06-Linux/1.1.Linux基本操作.md)
+  * [1.2.Linux常用工具](a06-Linux/1.2.Linux常用工具.md)
   * [Linux操作](a06-Linux/Linux操作.md)
   * [Linux概念](a06-Linux/Linux概念.md)
   * [Linux进程管理](a06-Linux/Linux进程管理.md)
   * [《Unix-Linux编程实践教程》笔记](a06-Linux/《Unix-Linux编程实践教程》笔记.md)
 * a10-面试
   * [os面试题](a10-面试/os面试题.md)
+  * [redis1](a10-面试/redis1.md)
   * [面经1](a10-面试/面经1.md)
   * [中兴面经](a10-面试/中兴面经.md)
   * [操作系统](a10-面试/操作系统.md)
@@ -147,7 +150,6 @@
   * [jetbrains快捷键](s01-coding工具/jetbrains快捷键.md)
   * [mysql笔记](s01-coding工具/mysql笔记.md)
   * [shell编程](s01-coding工具/shell编程.md)
-  * [vim常用命令](s01-coding工具/vim常用命令.md)
   * [构建工具](s01-coding工具/构建工具.md)
   * [正则表达式](s01-coding工具/正则表达式.md)
 * s02-其他工具
