@@ -69,6 +69,7 @@
 * a06-Linux
   * [1.1.Linux基本操作](a06-Linux/1.1.Linux基本操作.md)
   * [1.2.Linux常用工具](a06-Linux/1.2.Linux常用工具.md)
+  * [1.3.Linux系统编程-进程](a06-Linux/1.3.Linux系统编程-进程.md)
   * [Linux操作](a06-Linux/Linux操作.md)
   * [Linux概念](a06-Linux/Linux概念.md)
   * [Linux进程管理](a06-Linux/Linux进程管理.md)
