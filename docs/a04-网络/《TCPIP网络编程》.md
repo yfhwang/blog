@@ -1,2 +1,528 @@
 TCPIP网络编程
 https://www.evernote.com/l/AnvkzTiC-WdOBbiJeNtRLwx8cYF8dEhC2u4
+
+## 函数说明
+
+### socket
+
+创建套接字
+
+```c
+#include <sys/socket.h>
+int socket(int domain, int type, int protocol);
+//成功返回文件描述符，失败返回-1
+//PF_INET: IPv4
+//SOCK_STREAM: TCP
+
+serv_sock=socket(PF_INET, SOCK_STREAM, 0);
+if(serv_sock == -1)
+  error_handling("socket() error");
+
+memset(&serv_addr, 0, sizeof(serv_addr));
+serv_addr.sin_family=AF_INET;
+serv_addr.sin_addr.s_addr=htonl(INADDR_ANY);
+serv_addr.sin_port=htons(atoi(argv[1]));
+```
+
+### bind
+
+给套接字分配地址
+
+```c
+#include <sys/socket.h>
+int bind(int sockfd, struct sockaddr *myaddr, socklen_t addrlen);
+//成功返回0，失败返回-1
+
+if(bind(serv_sock, (struct sockaddr*) &serv_addr, sizeof(serv_addr))==-1 )
+	error_handling("bind() error"); 
+```
+
+### listen
+
+服务器端等待连接请求
+
+```c
+#include <sys/socket.h>
+int listen(int sockfd, int backlog);
+//成功返回0，失败返回-1
+
+if(listen(serv_sock, 5)==-1)
+  error_handling("listen() error");
+```
+
+### accept
+
+服务器端接收连接请求
+
+```c
+#include <sys/socket.h>
+int accept(int sockfd, struct sockaddr *addr, socklen_t *addrlen);
+//成功返回创建的socket的文件描述符，失败返回-1
+//*addr: accept函数将客户端地址赋值给addr
+
+clnt_sock=accept(serv_sock, (struct sockaddr*)&clnt_addr,&clnt_addr_size);
+if(clnt_sock==-1)
+  error_handling("accept() error");  
+```
+
+### connect
+
+客户端请求连接
+
+```c
+#include <sys/socket.h>
+int connect(int sock, struct sockaddr *servaddr, socklen_t addrlen);
+//成功返回0，失败返回-1
+//sock: 客户端socket文件描述符
+//servaddr: 服务器端地址，需要赋好值
+
+if(connect(sock, (struct sockaddr*)&serv_addr, sizeof(serv_addr))==-1) 
+  error_handling("connect() error!");
+```
+
+
+
+
+
+## 基于TCP的服务器端/客户端
+
+### 函数调用关系
+
+<img src="../images/image-20210303143311059.png" alt="image-20210303143311059" style="zoom:67%;" />
+
+
+
+### 服务器端代码
+
+```c
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <unistd.h>
+#include <arpa/inet.h>
+#include <sys/socket.h>
+
+void error_handling(char *message);
+
+int main(int argc, char *argv[])
+{
+	int serv_sock;
+	int clnt_sock;
+
+	struct sockaddr_in serv_addr;
+	struct sockaddr_in clnt_addr;
+	socklen_t clnt_addr_size;
+
+	char message[]="Hello World!";
+	
+	if(argc!=2){
+		printf("Usage : %s <port>\n", argv[0]);
+		exit(1);
+	}
+	
+	serv_sock=socket(PF_INET, SOCK_STREAM, 0);
+	if(serv_sock == -1)
+		error_handling("socket() error");
+	
+	memset(&serv_addr, 0, sizeof(serv_addr));
+	serv_addr.sin_family=AF_INET;
+	serv_addr.sin_addr.s_addr=htonl(INADDR_ANY);
+	serv_addr.sin_port=htons(atoi(argv[1]));
+	
+	if(bind(serv_sock, (struct sockaddr*) &serv_addr, sizeof(serv_addr))==-1 )
+		error_handling("bind() error"); 
+	
+	if(listen(serv_sock, 5)==-1)
+		error_handling("listen() error");
+	
+	clnt_addr_size=sizeof(clnt_addr);  
+	clnt_sock=accept(serv_sock, (struct sockaddr*)&clnt_addr,&clnt_addr_size);
+	if(clnt_sock==-1)
+		error_handling("accept() error");  
+	
+	write(clnt_sock, message, sizeof(message));
+	close(clnt_sock);	
+	close(serv_sock);
+	return 0;
+}
+
+void error_handling(char *message)
+{
+	fputs(message, stderr);
+	fputc('\n', stderr);
+	exit(1);
+}
+
+```
+
+### 客户端代码
+
+```c
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <unistd.h>
+#include <arpa/inet.h>
+#include <sys/socket.h>
+
+void error_handling(char *message);
+
+int main(int argc, char* argv[])
+{
+	int sock;
+	struct sockaddr_in serv_addr;
+	char message[30];
+	int str_len;
+	
+	if(argc!=3){
+		printf("Usage : %s <IP> <port>\n", argv[0]);
+		exit(1);
+	}
+	
+	sock=socket(PF_INET, SOCK_STREAM, 0);
+	if(sock == -1)
+		error_handling("socket() error");
+	
+	memset(&serv_addr, 0, sizeof(serv_addr));
+	serv_addr.sin_family=AF_INET;
+	serv_addr.sin_addr.s_addr=inet_addr(argv[1]);
+	serv_addr.sin_port=htons(atoi(argv[2]));
+		
+	if(connect(sock, (struct sockaddr*)&serv_addr, sizeof(serv_addr))==-1) 
+		error_handling("connect() error!");
+	
+	str_len=read(sock, message, sizeof(message)-1);
+	if(str_len==-1)
+		error_handling("read() error!");
+	
+	printf("Message from server: %s \n", message);  
+	close(sock);
+	return 0;
+}
+
+void error_handling(char *message)
+{
+	fputs(message, stderr);
+	fputc('\n', stderr);
+	exit(1);
+}
+
+```
+
+
+
+### 运行
+
+```sh
+#服务器端
+gcc -o hello_server hello_server.c
+./hello_sever 9190
+```
+
+
+
+```sh
+#客户端
+gcc -o hello_client hello_client.c
+./hello_client 127.0.0.1 9190
+```
+
+
+
+## 多进程服务器端
+
+### 僵尸进程
+
+> 进程完成工作（执行完main函数后）应该被销毁，不销毁则变为僵尸进程
+
+应该向创建子进程的父进程传递子进程的 exit 参数值或 return 语句的返回值
+
+#### wait函数
+
+调用wait函数时，如果没有已终止的子进程，程序将阻塞（blocking）直到有子进程终止
+
+```c
+#include <sys/wait.h>
+pid_t wait(int *statloc);
+//成功返回终止的子进程ID，失败返回-1
+//statloc: 返回值
+
+wait(&status);//调用 wait 函数。之前终止的子进程相关信息将保存到 status 变量，同时相关子进程被完全销毁。
+if(WIFEXITED(status)) //通过 WIFEXITED 宏验证子进程是否正常终止。如果正常退出，则调用 WEXITSTATUS 宏输出子进程的返回值。
+  printf("Child send one: %d \n", WEXITSTATUS(status));
+```
+
+父进程调用wait函数，主动请求获取子进程的返回值：
+
+```c
+#include <stdio.h>
+#include <stdlib.h>
+#include <unistd.h>
+#include <sys/wait.h>
+
+int main(int argc, char *argv[])
+{
+	int status;
+	pid_t pid=fork();
+	
+	if(pid==0) /* 子进程 */
+	{
+		return 3;   	
+	}
+	else /* 父进程 */
+	{
+		printf("Child PID: %d \n", pid);
+		pid=fork();
+		if(pid==0)	/* 另一个子进程 */
+		{
+			exit(7);
+		}
+		else  /* 父进程 */
+		{
+			printf("Child PID: %d \n", pid);
+			wait(&status);//调用 wait 函数。之前终止的子进程相关信息将保存到 status 变量，同时相关子进程被完全销毁。
+			if(WIFEXITED(status)) //通过 WIFEXITED 宏验证子进程是否正常终止。如果正常退出，则调用 WEXITSTATUS 宏输出子进程的返回值。
+				printf("Child send one: %d \n", WEXITSTATUS(status));
+
+			wait(&status);
+			if(WIFEXITED(status))
+				printf("Child send two: %d \n", WEXITSTATUS(status));
+			sleep(30);     // Sleep 30 sec.
+		}
+	}
+	return 0;
+}
+```
+
+#### waitpid函数
+
+```c
+#include <sys/wait.c>
+pid_t waitpid(pid_t pid, int * statloc, int options);
+//成功时返回终止的子进程ID（无终止的子进程时为0），失败时返回-1
+//pid: 子进程ID，为-1时可以为任意子进程
+//options: 传递头文件sys/wait.h中声明的常量 WNOHANG，即使没有终止的子进程也不会进入阻塞状态，而是返回 0 并退出函数。
+
+void read_childproc(int sig)
+{
+	int status;
+	pid_t id=waitpid(-1, &status, WNOHANG); //等待子程序终止
+	if(WIFEXITED(status))
+	{
+		printf("Removed proc id: %d \n", id);
+		printf("Child send: %d \n", WEXITSTATUS(status));
+	}
+}
+```
+
+调用 waitpid 函数时，程序不会阻塞：
+
+```c
+#include <stdio.h>
+#include <unistd.h>
+#include <sys/wait.h>
+
+int main(int argc, char *argv[])
+{
+	int status;
+	pid_t pid=fork();
+	
+	if(pid==0) /* 子进程 */
+	{
+		sleep(15);
+		return 24;   	
+	}
+	else	/* 父进程 */
+	{
+		while(printf("%d\n",waitpid(-1, &status, WNOHANG)))
+		{
+			sleep(3);
+			puts("sleep 3sec.");
+		}
+		if(WIFEXITED(status))
+			printf("Child send %d \n", WEXITSTATUS(status));
+	}
+	return 0;
+}
+
+/*
+root@my_linux:/home/swyoon/tcpip# gcc waitpid.c -o waitpid
+root@my_linux:/home/swyoon/tcpip# ./waitpid
+sleep 3sec.
+sleep 3sec.
+sleep 3sec.
+sleep 3sec.
+sleep 3sec.
+Child send 24 
+*/
+```
+
+### 信号处理
+
+> 信号是在特定事件发生时，由操作系统向进程发送的消息
+
+#### signal函数
+
+```c
+#include <signal.h>
+void (*signal(int signo, void （*func)(int))(int);
+//在产生信号时调用，返回之前注册的函数指针
+
+signal(SIGALRM, timeout);	//注册，alarm函数时间到时触发
+signal(SIGINT, keycontrol);	//注册，输入CTRL+C时触发
+
+```
+
+alarm函数触发signal的示例
+
+```c
+#include <stdio.h>
+#include <unistd.h>
+#include <signal.h>
+
+void timeout(int sig)
+{
+	if(sig==SIGALRM)
+		puts("Time out!");
+	alarm(2);		//每隔两秒产生SIGALRM信号
+}
+int main(int argc, char *argv[])
+{
+	int i;
+	signal(SIGALRM, timeout);	//注册
+	alarm(2);
+	for(i=0; i<3; i++)
+	{
+		puts("wait...");
+		sleep(100);
+	}
+	return 0;
+}
+```
+
+#### sigaction函数
+
+> 使用更多，sigaction函数更稳定，在UNIX的不同操作系统完全相同
+
+```c
+#include <signal.h>
+int sigaction(int signo, const struct sigaction *act, struct sigaction *oldact);
+//signo: 和signal函数相同
+//act: 对于信号信息的信号处理函数（信号处理器）
+//oldact: 获取之前注册的信号处理函数指针，不需要时传递0
+struct sigaction {
+  void (*sa_handler)(int);
+  sigset_t sa_mask;
+  int sa_flags;
+}
+//sa_handler: 保存信号处理函数的指针值
+//sa_mask、sa_flags: 置0即可
+
+struct sigaction act;
+act.sa_handler=read_childproc;
+sigemptyset(&act.sa_mask);
+act.sa_flags=0;
+sigaction(SIGCHLD, &act, 0);
+```
+
+### 消灭僵尸进程
+
+```c
+#include <stdio.h>
+#include <stdlib.h>
+#include <unistd.h>
+#include <signal.h>
+#include <sys/wait.h>
+
+void read_childproc(int sig)
+{
+	int status;
+	pid_t id=waitpid(-1, &status, WNOHANG); //等待子程序终止
+	if(WIFEXITED(status))
+	{
+		printf("Removed proc id: %d \n", id);
+		printf("Child send: %d \n", WEXITSTATUS(status));
+	}
+}
+
+int main(int argc, char *argv[])
+{
+	pid_t pid;
+	struct sigaction act;
+	act.sa_handler=read_childproc;
+	sigemptyset(&act.sa_mask);
+	act.sa_flags=0;
+	sigaction(SIGCHLD, &act, 0);  //注册
+
+	pid=fork();
+	if(pid==0) /* 子进程 */
+	{
+		puts("Hi! I'm child process");
+		sleep(10);
+		return 12;
+	}
+	else	/* 父进程 */
+	{
+		printf("Child proc id: %d \n", pid);
+		pid=fork();
+		if(pid==0)
+		{
+			puts("Hi! I'm child process");
+			sleep(10);
+			exit(24);
+		}
+		else	/* 另一个子进程 */
+		{
+			int i;
+			printf("Child proc id: %d \n", pid);
+			for(i=0; i<5; i++)
+			{
+				puts("wait...");
+				sleep(5);
+			}
+		}
+	}
+	return 0;
+}
+
+/*
+root@my_linux:/home/swyoon/tcpip# gcc remove_zombie.c -o zombie
+root@my_linux:/home/swyoon/tcpip# ./zombie
+Hi! I'm child process
+Child proc id: 9529 
+Hi! I'm child process
+Child proc id: 9530 
+wait...
+wait...
+Removed proc id: 9530 
+Child send: 24 
+wait...
+Removed proc id: 9529 
+Child send: 12 
+wait...
+wait...
+*/
+```
+
+
+
+## fork复制文件描述符
+
+调用fork函数后，2个文件描述符指向同一个socket
+
+![image-20210303165744142](../images/image-20210303165744142.png)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
