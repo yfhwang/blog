@@ -181,3 +181,7 @@ https://blog.csdn.net/j___t/article/details/99704646
 # 大括号
 
 https://blog.csdn.net/qq_43657442/article/details/112302740
+
+## 快捷键
+
+回到上一个位置：ctrl + -
