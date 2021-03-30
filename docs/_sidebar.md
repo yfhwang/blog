@@ -10,6 +10,10 @@
   * [3.2.interview-effective](a01-C++语言/3.2.interview-effective.md)
   * [3.3.interview-STL](a01-C++语言/3.3.interview-STL.md)
   * [3.4.interview-STL-README](a01-C++语言/3.4.interview-STL-README.md)
+  * [4.1.SkillTree-编程基础](a01-C++语言/4.1.SkillTree-编程基础.md)
+  * [4.2.SkillTree-面向对象编程](a01-C++语言/4.2.SkillTree-面向对象编程.md)
+  * [4.3.SkillTree-标准模板库](a01-C++语言/4.3.SkillTree-标准模板库.md)
+  * [4.4.SkillTree-编译及调试](a01-C++语言/4.4.SkillTree-编译及调试.md)
 * a02-算法
   * [1.1.数据结构-链表](a02-算法/1.1.数据结构-链表.md)
   * [1.2.数据结构-树](a02-算法/1.2.数据结构-树.md)
@@ -44,6 +48,7 @@
   * [3.内存管理](a03-操作系统/3.内存管理.md)
   * [4.设备管理](a03-操作系统/4.设备管理.md)
   * [5.链接](a03-操作系统/5.链接.md)
+  * [SkillTree-操作系统](a03-操作系统/SkillTree-操作系统.md)
   * [interview-操作系统](a03-操作系统/interview-操作系统.md)
   * [计算机操作系统-进程管理](a03-操作系统/计算机操作系统-进程管理.md)
 * a04-网络
@@ -68,6 +73,7 @@
   * [04.MySQL](a05-数据库/04.MySQL.md)
   * [05.Redis](a05-数据库/05.Redis.md)
   * [interview-数据库](a05-数据库/interview-数据库.md)
+  * [《图解mysql面试题》](a05-数据库/《图解mysql面试题》.md)
 * a06-Linux
   * [1.1.Linux基本操作](a06-Linux/1.1.Linux基本操作.md)
   * [1.2.Linux常用工具](a06-Linux/1.2.Linux常用工具.md)
@@ -78,13 +84,15 @@
   * [Linux进程管理](a06-Linux/Linux进程管理.md)
   * [《Unix-Linux编程实践教程》笔记](a06-Linux/《Unix-Linux编程实践教程》笔记.md)
 * a10-面试
+  * [1.1.操作系统面试题总结](a10-面试/1.1.操作系统面试题总结.md)
+  * [1.2.计算机网络面试题总结](a10-面试/1.2.计算机网络面试题总结.md)
+  * [mysql面试题](a10-面试/mysql面试题.md)
   * [os面试题](a10-面试/os面试题.md)
   * [redis1](a10-面试/redis1.md)
   * [面经1](a10-面试/面经1.md)
+  * [腾讯c++](a10-面试/腾讯c++.md)
   * [中兴面经](a10-面试/中兴面经.md)
-  * [操作系统](a10-面试/操作系统.md)
   * [字节面经1](a10-面试/字节面经1.md)
-  * [计算机网络](a10-面试/计算机网络.md)
   * [腾讯测开面试](a10-面试/腾讯测开面试.md)
 * b01-设计模式
   * [0.设计模式-目录](b01-设计模式/0.设计模式-目录.md)
