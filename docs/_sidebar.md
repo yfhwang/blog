@@ -64,7 +64,10 @@
   * [1.4.MySQL](a05-数据库/1.4.MySQL.md)
   * [1.5.Redis](a05-数据库/1.5.Redis.md)
   * [2.1.图解mysql面试题](a05-数据库/2.1.图解mysql面试题.md)
+  * [MySQL实战45讲笔记](a05-数据库/MySQL实战45讲笔记.md)
   * [interview-数据库](a05-数据库/interview-数据库.md)
+  * [mysql笔记](a05-数据库/mysql笔记.md)
+  * [《MySQL是怎样运行的》](a05-数据库/《MySQL是怎样运行的》.md)
 * a06-Linux
   * [1.1.Linux基本操作](a06-Linux/1.1.Linux基本操作.md)
   * [1.2.Linux常用工具](a06-Linux/1.2.Linux常用工具.md)
