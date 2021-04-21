@@ -1,19 +1,30 @@
 #include <iostream>
 #include <algorithm>
 using namespace std;
+/*
+(大顶)堆的性质:
+	1. 堆中某个结点的值总是不大于其父结点的值；
+	2. 堆总是一棵完全二叉树。
 
-// 堆排序：（最大堆，有序区）。从堆顶把根卸出来放在有序区之前，再恢复堆。
+	arr[i] >= arr[2 * i + 1] && arr[i] >= arr[2 * i + 2]  
+
+（最大堆，有序区）
+堆排序的步骤:
+	1. 将待排序序列构造成一个大顶堆，此时，整个序列的最大值就是堆顶的根节点。
+	2. 将堆顶与末尾元素进行交换，此时末尾就为最大值。
+	3. 然后将剩余n-1个元素重新构造成一个堆，这样会得到n个元素的次小值。
+	4. 重复执行步骤3
+*/
 
 void max_heapify(int arr[], int start, int end) {
-	//建立父節點指標和子節點指標
 	int dad = start;
 	int son = dad * 2 + 1;
-	while (son <= end) { //若子節點指標在範圍內才做比較
-		if (son + 1 <= end && arr[son] < arr[son + 1]) //先比較兩個子節點大小，選擇最大的
-			son++;
-		if (arr[dad] > arr[son]) //如果父節點大於子節點代表調整完畢，直接跳出函數
+	while (son <= end) { 
+		if (son + 1 <= end && arr[son] < arr[son + 1]) 
+			son++;//选择两个子节点中的较大者
+		if (arr[dad] > arr[son]) {	// 若已经排序, 则退出循环
 			return;
-		else { //否則交換父子內容再繼續子節點和孫節點比較
+		} else { // 交换父子节点后, 子节点再向下交换
 			swap(arr[dad], arr[son]);
 			dad = son;
 			son = dad * 2 + 1;
@@ -22,10 +33,9 @@ void max_heapify(int arr[], int start, int end) {
 }
 
 void heap_sort(int arr[], int len) {
-	//初始化，i從最後一個父節點開始調整
-	for (int i = len / 2 - 1; i >= 0; i--)
+	// 堆的初始化
+	for (int i = len / 2 - 1; i >= 0; i--)	// 从第一个非叶节点开始调整
 		max_heapify(arr, i, len - 1);
-	//先將第一個元素和已经排好的元素前一位做交換，再從新調整(刚调整的元素之前的元素)，直到排序完畢
 	for (int i = len - 1; i > 0; i--) {
 		swap(arr[0], arr[i]);
 		max_heapify(arr, 0, i - 1);
