@@ -15,6 +15,17 @@ using namespace std;
 	3. 然后将剩余n-1个元素重新构造成一个堆，这样会得到n个元素的次小值。
 	4. 重复执行步骤3
 */
+void heap_sort(int arr[], int len); 	// 堆排序算法
+void max_heapify(int arr[], int start, int end);	// 向下建堆算法
+
+void heap_sort(int arr[], int len) {
+	for (int i = len / 2 - 1; i >= 0; i--)	// 堆的初始化, 从第一个非叶节点开始向上调整
+		max_heapify(arr, i, len - 1);
+	for (int i = len - 1; i > 0; i--) {
+		swap(arr[0], arr[i]);
+		max_heapify(arr, 0, i - 1);
+	}
+}
 
 void max_heapify(int arr[], int start, int end) {
 	int dad = start;
@@ -29,16 +40,6 @@ void max_heapify(int arr[], int start, int end) {
 			dad = son;
 			son = dad * 2 + 1;
 		}
-	}
-}
-
-void heap_sort(int arr[], int len) {
-	// 堆的初始化
-	for (int i = len / 2 - 1; i >= 0; i--)	// 从第一个非叶节点开始调整
-		max_heapify(arr, i, len - 1);
-	for (int i = len - 1; i > 0; i--) {
-		swap(arr[0], arr[i]);
-		max_heapify(arr, 0, i - 1);
 	}
 }
 
