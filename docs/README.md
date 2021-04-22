@@ -62,10 +62,10 @@ https://interview.huihut.com/#/
 https://snailclimb.gitee.io/javaguide/#/
 
 - Java
-  - [基础 (必看 ![thumbsup](https://github.githubassets.com/images/icons/emoji/unicode/1f44d.png))](https://snailclimb.gitee.io/javaguide/#/?id=基础)
+  - [基础 (必看)](https://snailclimb.gitee.io/javaguide/#/?id=基础)
   - [容器](https://snailclimb.gitee.io/javaguide/#/?id=容器)
   - [并发](https://snailclimb.gitee.io/javaguide/#/?id=并发)
-  - [JVM (必看 ![thumbsup](https://github.githubassets.com/images/icons/emoji/unicode/1f44d.png))](https://snailclimb.gitee.io/javaguide/#/?id=jvm-必看-1)
+  - [JVM (必看)](https://snailclimb.gitee.io/javaguide/#/?id=jvm-必看-1)
   - [新特性](https://snailclimb.gitee.io/javaguide/#/?id=新特性)
 - [网络](https://snailclimb.gitee.io/javaguide/#/?id=网络)
 - [操作系统](https://snailclimb.gitee.io/javaguide/#/?id=操作系统)
@@ -76,11 +76,11 @@ https://snailclimb.gitee.io/javaguide/#/
   - [MySQL](https://snailclimb.gitee.io/javaguide/#/?id=mysql)
   - [Redis](https://snailclimb.gitee.io/javaguide/#/?id=redis)
 - 系统设计
-  - [编码之道(必看 ![thumbsup](https://github.githubassets.com/images/icons/emoji/unicode/1f44d.png))](https://snailclimb.gitee.io/javaguide/#/?id=编码之道必看-1)
+  - [编码之道(必看)](https://snailclimb.gitee.io/javaguide/#/?id=编码之道必看-1)
   - 常用框架
     - [Spring/SpringBoot](https://snailclimb.gitee.io/javaguide/#/?id=springspringboot)
     - [MyBatis](https://snailclimb.gitee.io/javaguide/#/?id=mybatis)
-    - [Netty (必看 ![thumbsup](https://github.githubassets.com/images/icons/emoji/unicode/1f44d.png))](https://snailclimb.gitee.io/javaguide/#/?id=netty-必看-1)
+    - [Netty (必看)](https://snailclimb.gitee.io/javaguide/#/?id=netty-必看-1)
     - [ZooKeeper](https://snailclimb.gitee.io/javaguide/#/?id=zookeeper)
   - 认证授权
     - [JWT](https://snailclimb.gitee.io/javaguide/#/?id=jwt)
@@ -114,6 +114,18 @@ https://snailclimb.gitee.io/javaguide/#/
   - [捐赠支持](https://snailclimb.gitee.io/javaguide/#/?id=捐赠支持)
   - [Contributor](https://snailclimb.gitee.io/javaguide/#/?id=贡献者)
   - [公众号](https://snailclimb.gitee.io/javaguide/#/?id=公众号)
+
+## Java-Notes
+
+https://github.com/PansonPanson/Java-Notes
+
+| 🍓                                                            | 🍒                                                            | 🌰                                                            | 🍑                                                            | 🍏                                                            | 🍎                                                            | 🍇                                                            | 🍋                                                            |
+| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| **计算机科学**                                               | **Java**                                                     | **Web**                                                      | **架构**                                                     | **中间件**                                                   | **分布式**                                                   | **工具**                                                     | **未分类**                                                   |
+| [计算机网络](https://github.com/PansonPanson/Java-Notes/blob/master/md/计算机网络.md) | [Java基础](https://github.com/PansonPanson/Java-Notes/blob/master/md/Java基础.md) | [框架](https://github.com/PansonPanson/Java-Notes/blob/master/md/框架.md) | [设计模式](https://github.com/PansonPanson/Java-Notes/blob/master/md/设计模式.md) | [Zookeeper](https://github.com/PansonPanson/Java-Notes/blob/master/md/Zookeeper.md) | [分布式基础理论](https://github.com/PansonPanson/Java-Notes/blob/master/md/分布式.md) | [IDEA系列教程](https://github.com/judasn/IntelliJ-IDEA-Tutorial) | 视频 [Git](https://ww.nowcoder.com/courses/2)书籍 [《Pro Git》](http://iissnan.com/progit/) |
+| [操作系统](https://github.com/PansonPanson/Java-Notes/blob/master/md/操作系统.md) | [Java并发](https://github.com/PansonPanson/Java-Notes/blob/master/md/Java并发.md) |                                                              | [系统设计](https://github.com/PansonPanson/Java-Notes/blob/master/md/系统设计.md) | [消息队列](https://github.com/PansonPanson/Java-Notes/blob/master/md/消息队列.md) |                                                              | [Postman系列教程](https://www.jellythink.com/archives/category/tool-tutorials/postman) | [Docker — 从入门到实践](https://github.com/yeasy/docker_practice/blob/master/SUMMARY.md) |
+| [数据库](https://github.com/PansonPanson/Java-Notes/blob/master/md/数据库.md) | [JVM](https://github.com/PansonPanson/Java-Notes/blob/master/md/JVM.md) |                                                              | [代码规范](https://github.com/alibaba/p3c/blob/master/阿里巴巴Java开发手册（详尽版）.pdf) | [Web Server](https://github.com/PansonPanson/Java-Notes/blob/master/md/Web Server.md) |                                                              |                                                              | [其他](https://github.com/PansonPanson/Java-Notes/blob/master/md/其他.md) |
+| [算法](https://github.com/PansonPanson/Java-Notes/blob/master/md/算法.md) | [科普系列](https://github.com/PansonPanson/Java-Notes/blob/master/md/科普系列.md) |                                                              |                                                              | [搜索引擎](https://github.com/PansonPanson/Java-Notes/blob/master/md/搜索引擎.md) |                                                              |                                                              |                                                              |
 
 ## JavaFamily
 
