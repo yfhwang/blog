@@ -210,5 +210,18 @@ $ git merge upstream/master
 
 ## 解决git pull/push每次都需要输入密码问题
 
+```sh
 git config --global credential.helper store
+```
+
+
+
+密码错误：
+
+```sh
+//删除 manager配置
+git config --global --unset credential.helper manager
+//添加manager配置
+git config --global  credential.helper manager
+```
 
