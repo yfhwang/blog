@@ -46,7 +46,7 @@
   * [1.1.MySQL笔记-零声](a05-数据库/1.1.MySQL笔记-零声.md)
   * [1.2.MySQL实战45讲笔记](a05-数据库/1.2.MySQL实战45讲笔记.md)
   * [1.3.MySQL安装使用](a05-数据库/1.3.MySQL安装使用.md)
-  * [2.1.图解MySQL面试题-猴子](a05-数据库/2.1.图解MySQL面试题-猴子.md)
+  * [1.4.图解MySQL面试题-猴子](a05-数据库/1.4.图解MySQL面试题-猴子.md)
 * a06-Linux
   * [1.1.Linux基本操作-黑马](a06-Linux/1.1.Linux基本操作-黑马.md)
   * [1.2.Linux操作-博客整理](a06-Linux/1.2.Linux操作-博客整理.md)
@@ -55,10 +55,12 @@
   * [2.1.Linux常用工具-黑马](a06-Linux/2.1.Linux常用工具-黑马.md)
   * [3.1.Linux进程间通信-黑马](a06-Linux/3.1.Linux进程间通信-黑马.md)
   * [3.2.Linux进程管理-博客整理](a06-Linux/3.2.Linux进程管理-博客整理.md)
-* a07-工具和中间件
-  * [1.1.Nginx](a07-工具和中间件/1.1.Nginx.md)
-  * [1.2.Redis](a07-工具和中间件/1.2.Redis.md)
-  * [Git命令](a07-工具和中间件/Git命令.md)
+* a07-后台组件
+  * [2.1.Nginx](a07-后台组件/2.1.Nginx.md)
+  * [2.2.Redis](a07-后台组件/2.2.Redis.md)
+  * [2.3.MongoDB](a07-后台组件/2.3.MongoDB.md)
+  * [2.4.ZeroMQ](a07-后台组件/2.4.ZeroMQ.md)
+  * [3.1.线程池](a07-后台组件/3.1.线程池.md)
 * a10-面试
   * [mysql面试题](a10-面试/mysql面试题.md)
   * [os面试题](a10-面试/os面试题.md)
@@ -84,6 +86,7 @@
   * [2.1.Mac-automator编程](c03-coding工具/2.1.Mac-automator编程.md)
   * [2.2.Mac-iTerm2使用](c03-coding工具/2.2.Mac-iTerm2使用.md)
   * [3.1.Shell编程](c03-coding工具/3.1.Shell编程.md)
+  * [Git命令](c03-coding工具/Git命令.md)
 * s01-其他工具
   * [1.1.docsify搭建网页](s01-其他工具/1.1.docsify搭建网页.md)
   * [2.1.vmware虚拟机](s01-其他工具/2.1.vmware虚拟机.md)
