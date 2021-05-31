@@ -19,9 +19,11 @@ void heap_sort(int arr[], int len); 	// 堆排序算法
 void max_heapify(int arr[], int start, int end);	// 向下建堆算法
 
 void heap_sort(int arr[], int len) {
-	for (int i = len / 2 - 1; i >= 0; i--)	// 堆的初始化, 从第一个非叶节点开始向上调整
+	// 堆的初始化, 从第一个非叶节点开始向上调整
+	for (int i = len / 2 - 1; i >= 0; i--)	
 		max_heapify(arr, i, len - 1);
-	for (int i = len - 1; i > 0; i--) {
+	// 将根节点(当前最大)换到最后, 然后进行一轮heapify
+	for (int i = len - 1; i > 0; i--) {	
 		swap(arr[0], arr[i]);
 		max_heapify(arr, 0, i - 1);
 	}
