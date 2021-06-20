@@ -1,5 +1,11 @@
 https://github.com/linyacool/WebServer
 
+https://zhuanlan.zhihu.com/p/368154495
+
+https://blog.csdn.net/daaikuaichuan/article/details/100514401
+
+https://mp.weixin.qq.com/mp/appmsgalbum?__biz=MzAxNzU2MzcwMw==&action=getalbum&album_id=1339230165934882817&scene=173&from_msgid=2649274278&from_itemidx=7&count=3&nolastread=1#wechat_redirect
+
 # 面试被问过的问题
 
 * 介绍一下这个项目(几乎是必问的)

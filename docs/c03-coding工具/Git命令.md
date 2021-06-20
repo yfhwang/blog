@@ -1,5 +1,13 @@
 # Git命令
 
+## 工作区域和流程
+
+
+
+![487723f3c50945138a49628809587bbf_tplv-k3u1fbpfcp-zoom-1](../images/487723f3c50945138a49628809587bbf_tplv-k3u1fbpfcp-zoom-1.jpg)
+
+
+
 ## Github太慢
 
 > 使用国内镜像，目前已知Github国内镜像网站有[github.com.cnpmjs.org](https://github.com.cnpmjs.org/)和[git.sdut.me/](https://git.sdut.me/)。速度根据各地情况而定，在clone某个项目的时候将github.com替换为github.com.cnpmjs.org即可。
