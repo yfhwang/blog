@@ -16,6 +16,7 @@ def walkFile(filename):
     fo = open(filename,"r")
     out = open("images_names.txt", "a+")
     lines = fo.readlines()
+    # src = "../images/三层架构.jpg"
     pattern = re.compile(r'(?<=../images/).*?(?=\))')   # 查找数字
     for line in lines:
         if(re.match(r'.*(?=../images/).*', line, 0)):   # 判断这一行中是否有img
